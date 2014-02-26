@@ -1,0 +1,50 @@
+body {
+  margin: 0;
+  font-family: helvetica;
+  color: #525252;
+}
+
+a {
+  text-decoration: none;
+  color: #3ABB92;
+}
+
+.control {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: orange;
+  z-index: 1000;
+}
+
+.main {
+  background-color: #dddddd;
+  height: 50px;
+  width: 95%;
+  position: fixed;
+  top: 0px;
+  z-index: 777;
+  padding: 0 50px;
+  border-bottom: 2px solid #969595;
+  border-radius: 3px;
+}
+
+header h1 {
+  float: left;
+  margin: 10px;
+}
+
+header ul {
+  display: inline;
+  float: right;
+}
+
+header ul li {
+  display: inline-block;
+}
+
+#map {
+  margin-top: 50px !important;
+}

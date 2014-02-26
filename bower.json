@@ -1,0 +1,19 @@
+{
+  "name": "pdx-parks",
+  "version": "0.0.0",
+  "homepage": "https://github.com/meandavejustice/pdx-parks",
+  "authors": [
+    "David Adam Justice <david@outthinkgroup.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "public/vendor",
+    "test",
+    "tests"
+  ]
+}
