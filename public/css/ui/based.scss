@@ -1,0 +1,77 @@
+.container {
+  margin-left: 0px;
+}
+
+body {
+  margin: 0;
+  font-family: helvetica;
+  color: #525252;
+}
+
+a {
+  text-decoration: none;
+  color: #3ABB92;
+}
+
+input {
+  margin: 15px;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.control {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: orange;
+  z-index: 1000;
+}
+
+.main {
+  background-color: #dddddd;
+  height: 50px;
+  position: fixed;
+  top: 0px;
+  z-index: 777;
+  padding: 0 50px;
+  border-bottom: 2px solid #969595;
+  border-radius: 3px;
+}
+
+header h1 {
+  float: left;
+  margin: 10px;
+}
+
+header ul {
+  display: inline;
+  float: right;
+}
+
+header ul li {
+  display: inline-block;
+}
+
+#map {
+  margin-top: 50px !important;
+  width: 1000px;
+  height: 400px;
+}
+
+#control {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #EBEBEB;
+  padding: 15px;
+  border-radius: 2px;
+}
+
+#control a {
+  float: right;
+}

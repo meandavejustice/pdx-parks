@@ -12,7 +12,7 @@ app.get('/', function(req, res){
 app.get('/parks', function(req, res){
   var queryData = deparam(req.url.split('?')[1]);
   console.log(queryData);
-  request.get('http://api.civicapps.org/parks/near/'+ queryData.lon +','+ queryData.lat +'?count=1')
+  request.get('http://api.civicapps.org/parks/near/'+ queryData.lon +','+ queryData.lat +'?count=5')
     .pipe(res);
 });
 

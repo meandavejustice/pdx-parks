@@ -1,4 +1,15 @@
-var hasGeo, zoom, markers;
+// Add handler for "getting your location"
+// Add marker popups
+// Add directions modal or something like dat
+
+var map, mapLayer, dir, hasGeo, zoom, parks, dirLayer, currentLocation;
+
+var count = 0;
+var submitButton = document.getElementsByClassName('submit')[0];
+var resetButton = document.getElementsByClassName('reset')[0];
+var anotherButton = document.getElementsByClassName('another')[0];
+var searchInput = document.getElementsByTagName('input')[0];
+var dismissDir = document.querySelector('#control a');
 
 var defaultLocation = {
   lat: 45.523425,
@@ -12,64 +23,71 @@ if ("geolocation" in navigator) {
 }
 
 function genMap() {
-  map = new OpenLayers.Map('map');
-  map.addLayer(new OpenLayers.Layer.OSM());
-
-  var lonLat = new OpenLayers.LonLat(defaultLocation.lon, defaultLocation.lat)
-    .transform(
-      new OpenLayers.Projection('EPSG:4326'),
-      map.getProjectionObject()
-    );
-
-  zoom = 16;
-
-  markers = new OpenLayers.Layer.Markers('Markers');
-  map.addLayer(markers);
-  markers.addMarker(new OpenLayers.Marker(lonLat));
-
-  map.setCenter (lonLat, zoom);
+  mapLayer = MQ.mapLayer(),
+  
+  map = L.map('map', {
+    layers: mapLayer,
+    center: [defaultLocation.lat, defaultLocation.lon],
+    zoom: 15
+  });
+  
+  L.control.layers({
+    'Map': mapLayer,
+    'Satellite': MQ.satelliteLayer(),
+    'Hybrid': MQ.hybridLayer()
+  }).addTo(map);
 }
 
 function closestParkSuccess(res) {
-  var response = JSON.parse(res.target.response).results[0];
-  updateMap(response.loc);
-}
-
-function doPop() {
-  
+  parks = JSON.parse(res.target.response).results;
+  updateMap(parks[count].loc);
 }
 
 function updateMap(newLocation) {
-  defaultLocation = newLocation;
-  var dest = new OpenLayers.LonLat(defaultLocation.lon, defaultLocation.lat)
-    .transform(
-      new OpenLayers.Projection('EPSG:4326'),
-      map.getProjectionObject()
-    );
-  
-  var marka = new OpenLayers.Marker(dest).setUrl('/public/icons/park.png');
-//  var el = marka.icon.imageDiv;
-  markers.addMarker(new OpenLayers.Marker(dest));
-  
-  // el.addEventListener('hover', doPop, false);
+  if (dirLayer) map.removeLayer(dirLayer);
 
-  debugger;
+  dir = MQ.routing.directions()
+    .on('success', function(data) {
+      var legs = data.route.legs,
+      html = '',
+      maneuvers,
+      i;
+      
+      if (legs && legs.length) {
+        maneuvers = legs[0].maneuvers;
+        
+        for (i=0; i<maneuvers.length; i++) {
+          html += (i+1) + '. ';
+          html += maneuvers[i].narrative + '<br />';
+        }
+        
+        L.DomUtil.get('route-narrative').innerHTML = html;
+      }
+    });
+  console.log('out routing coords', currentLocation, newLocation);
+  dir.route({
+    locations: [
+      { latLng: { lat: currentLocation.latitude, lng: currentLocation.longitude }},
+      { latLng: { lat: newLocation.lat, lng: newLocation.lon }}
+    ]
+  });
 
-  map.setCenter(dest, zoom);
+  dirLayer = MQ.routing.routeLayer({
+    directions: dir,
+    fitBounds: true
+  })
+  map.addLayer(dirLayer);
 }
 
 function onSuccess(position) {
   var coords = position.coords;
   var lat = coords.latitude;
   var lon = coords.longitude;
-  updateMap({
-    lat: lat,
-    lon: lon
-  });
+  currentLocation = coords;
 
   var req = new XMLHttpRequest();
   req.onloadend = closestParkSuccess;
-  req.open('get', '/parks?lon='+lon+'&lat='+lat+'&count=1');
+  req.open('get', '/parks?lon='+lon+'&lat='+lat+'&count=5');
   req.send();
 }
 
@@ -88,9 +106,39 @@ function getLocation() {
     });
 }
 
-// console.log('More or less ' + crd.accuracy + ' meters.');
+function setMapWidth() {
+  var mapEl = document.getElementById('map');
+  mapEl.style.width = window.innerWidth+'px';
+  mapEl.style.height = window.innerHeight+'px';
+}
+
+function findAnotherPark() {
+  count++;
+  updateMap(parks[count].loc);
+}
+
+function manualLoc() {
+  MQ.geocode({ map: map })
+    .search(searchInput.value)
+    .on('success', function(ev) {
+      var best = ev.result.best;
+      currentLocation = best.latlng;
+    });
+}
+
+function resetMap() {
+  MQ.geocode({ map: map })
+    .reverse({lat: defaultLocation.lat, lng: defaultLocation.lon})
+}
 
 (function() {
-  genMap();
+  submitButton.addEventListener('click', manualLoc, false);
+  resetButton.addEventListener('click', resetMap, false);
+  anotherButton.addEventListener('click', findAnotherPark, false);
+  dismissDir.addEventListener('click', function(ev) {
+    ev.currentTarget.parentElement.remove()
+  }, false);
+  setMapWidth();
+  window.onload = genMap();
   getLocation();
 })();
