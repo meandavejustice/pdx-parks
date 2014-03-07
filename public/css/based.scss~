@@ -1,0 +1,99 @@
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+$desktop: new-breakpoint(min-width 768px 12);
+$tablet: new-breakpoint(max-width 768px 1);
+
+.container {
+  margin-left: 0px;
+}
+
+body {
+  margin: 0;
+  font-family: helvetica;
+  color: #525252;
+}
+
+a {
+  text-decoration: none;
+  color: #3ABB92;
+}
+
+input {
+  margin: 15px;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px;
+}
+
+.control {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: orange;
+  z-index: 1000;
+}
+
+.main {
+    @include media($desktop) {
+        @include outer-container;
+    }
+
+    .title {
+        @include media($desktop) {
+            @include span-columns(7);
+        }
+
+        @include media($tablet) {
+            display: block;
+        }
+    }
+
+    .nav {
+        @include media($desktop) {
+            @include span-columns(7);
+        }
+        @include media($tablet) {
+            display: block;
+        }
+    }
+}
+
+/* header */
+.main {
+  background-color: #dddddd;
+  height: 60px;
+  z-index: 777;
+  border-bottom: 2px solid #969595;
+  border-radius: 3px;
+}
+
+.nav li {
+    display: inline-block;
+}
+
+/* need to add handler for window.onresize, that will override these defaults,
+ * or maybe this should be handled with media queries? 
+ */
+#map {
+  margin-top: 50px !important;
+  width: 1000px;
+  height: 400px;
+}
+
+#control {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #EBEBEB;
+  padding: 15px;
+  border-radius: 2px;
+}
+
+#control a {
+  float: right;
+}

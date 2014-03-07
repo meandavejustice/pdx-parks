@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "watch-css": "catw -c `sass public/css/style.scss public/style.css`",
-    "build-css": "sass public/css/style.scss public/style.css"
+    "watch-css": "catw -c `sass public/css/based.scss public/style.css`",
+    "build-css": "sass public/css/based.scss public/style.css"
   },
   "private": true,
   "author": "meandave",
@@ -16,7 +16,8 @@
     "request": "^2.34.0",
     "node-jquery-deparam": "0.0.3",
     "express": "^3.4.8",
-    "node-sass": "^0.8.1"
+    "node-sass": "^0.8.1",
+    "node-bourbon": "^1.0.0"
   },
   "devDependencies": {
     "catw": "^0.2.0"
