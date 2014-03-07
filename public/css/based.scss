@@ -40,11 +40,12 @@ input {
 .main {
     @include media($desktop) {
 //        @include outer-container;
+      padding: 0 70px;
     }
 
     .title {
         @include media($desktop) {
-            @include span-columns(7);
+            @include span-columns(5);
         }
 
         @include media($tablet) {
@@ -54,20 +55,30 @@ input {
         h1 {
             display: inline-block;
         }
+        .search {
+          display: inline-block;
+          position: absolute;
+          top: 0px;
+        }
     }
 
     .nav {
         @include media($desktop) {
-            @include span-columns(4);
+            @include span-columns(7);
         }
         @include media($tablet) {
             display: inline-block;
+        }
+
+        li {
+          padding: 5px 12px;
         }
     }
 }
 
 /* header */
 .main {
+  line-height: 10px;
   background-color: #dddddd;
   width: 100%;
   height: 60px;
@@ -78,13 +89,13 @@ input {
 
 .nav li {
     display: inline-block;
+    float: right;
 }
 
 /* need to add handler for window.onresize, that will override these defaults,
  * or maybe this should be handled with media queries? 
  */
 #map {
-  margin-top: 50px !important;
   width: 1000px;
   height: 400px;
 }
@@ -101,4 +112,9 @@ input {
 
 #control a {
   float: right;
+}
+
+// leaflet popup override
+.leaflet-popup-content {
+  text-align: center !important;
 }

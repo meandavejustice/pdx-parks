@@ -22,6 +22,19 @@ if ("geolocation" in navigator) {
   hasGeo = false;
 }
 
+function isCurrentLocation(loc) {
+  var lat = Math.floor(currentLocation.latitude * 10000) / 10000;
+  var lon = Math.floor(currentLocation.longitude * 10000) / 10000;
+
+  var newLat = Math.floor(loc.lat * 10000) / 10000;
+  var newLon = Math.floor(loc.lng * 10000) / 10000;
+  if (newLat === lat && newLon === lon) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 function genMap() {
   mapLayer = MQ.mapLayer(),
   
@@ -46,6 +59,8 @@ function closestParkSuccess(res) {
 function updateMap(newLocation) {
   if (dirLayer) map.removeLayer(dirLayer);
 
+  var parkDate = parks[count];
+
   dir = MQ.routing.directions()
     .on('success', function(data) {
       var legs = data.route.legs,
@@ -64,18 +79,52 @@ function updateMap(newLocation) {
         L.DomUtil.get('route-narrative').innerHTML = html;
       }
     });
+
   console.log('out routing coords', currentLocation, newLocation);
+
   dir.route({
     locations: [
-      { latLng: { lat: currentLocation.latitude, lng: currentLocation.longitude }},
-      { latLng: { lat: newLocation.lat, lng: newLocation.lon }}
+      { latLng: { lat: currentLocation.latitude, lng: currentLocation.longitude }, name: 'You are Here'},
+      { latLng: { lat: newLocation.lat, lng: newLocation.lon }, name: parkDate.Property}
     ]
   });
 
-  dirLayer = MQ.routing.routeLayer({
+  var CustomRouteLayer = MQ.Routing.RouteLayer.extend({
+    createStopMarker: function(location, stopNumber) {
+      var custom_icon,
+          marker;
+
+      custom_icon = L.icon({
+        iconUrl: '/public/img/marker-24.png',
+        iconSize: [20, 29],
+        iconAnchor: [10, 29],
+        popupAnchor: [0, -29]
+      });
+
+      debugger;
+      var markerStr = parks[count].Property + '<br>' + location.street;
+      if (isCurrentLocation(location.latLng)) {
+        markerStr = 'You are Here <br>' + location.street;
+      }
+
+      marker = L.marker(location.latLng, {icon: custom_icon})
+        .bindPopup(markerStr)
+        .openPopup()
+        .addTo(map);
+      
+      return marker;
+    }
+  });
+
+  dirLayer = new CustomRouteLayer({
     directions: dir,
-    fitBounds: true
-  })
+    fitBounds: true,
+    ribbonOptions: {
+      ribbonDisplay: {color: '#3ABB92', opacity: 0.5},
+      widths: [ 15, 15, 15, 15, 14, 13, 12, 12, 12, 11, 11, 11, 11, 12, 13, 14, 15 ]
+    }
+  });
+
   map.addLayer(dirLayer);
 }
 

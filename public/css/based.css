@@ -1,0 +1,66 @@
+/*
+Syntax error: Mixin "media" does not accept a content block.
+        on line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss, in `media'
+        from line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss
+
+36:   background: orange;
+37:   z-index: 1000;
+38: }
+39: 
+40: .main {
+41:     @include media($desktop) {
+42: //        @include outer-container;
+43:     }
+44: 
+45:     .title {
+46:         @include media($desktop) {
+
+Backtrace:
+/Users/meandave/Code/Projects/pdx-parks/public/css/based.scss:41:in `media'
+/Users/meandave/Code/Projects/pdx-parks/public/css/based.scss:41
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:254:in `visit_mixin'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:318:in `visit_rule'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `map'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:7:in `visit'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/root_node.rb:20:in `render'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/engine.rb:315:in `_render'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/engine.rb:262:in `render'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:200:in `each'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin.rb:81:in `update_stylesheets'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:417:in `watch_or_update'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:307:in `process_result'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:41:in `parse'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:21:in `parse!'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/bin/sass:8:in `<top (required)>'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/bin/sass:19:in `load'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286/bin/sass:19:in `<main>'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286@global/bin/ruby_noexec_wrapper:14:in `eval'
+/Users/meandave/.rvm/gems/ruby-1.9.3-p286@global/bin/ruby_noexec_wrapper:14:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: Mixin \"media\" does not accept a content block.\A         on line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss, in `media'\A         from line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss\A \A 36:   background: orange;\A 37:   z-index: 1000;\A 38: }\A 39: \A 40: .main {\A 41:     @include media($desktop) {\A 42: //        @include outer-container;\A 43:     }\A 44: \A 45:     .title {\A 46:         @include media($desktop) {"; }
