@@ -1,8 +1,11 @@
 var express = require('express');
 var request = require('request');
+var logfmt = require('logfmt');
 var deparam = require('node-jquery-deparam');
+var port = Number(process.env.PORT || 3000);
 var app = express();
 
+app.use(logfmt.requestLogger());
 app.use('/public', express.static(__dirname + '/public'));
 
 app.get('/', function(req, res){
@@ -16,4 +19,5 @@ app.get('/parks', function(req, res){
     .pipe(res);
 });
 
-app.listen(3000);
+app.listen(port);
+console.log('Server running on port:', port);
