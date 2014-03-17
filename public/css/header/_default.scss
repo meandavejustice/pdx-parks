@@ -1,0 +1,53 @@
+.header {
+  position: relative;
+}
+
+#toggle, .toggle {
+  display: none;
+}
+
+.menu {
+  > li {
+    list-style: none;
+    float: left;
+  }
+}
+
+/* Nicolas Gallagher micro clearfix */
+.clearfix:before, .clearfix:after { display: table; content: ""; }
+.clearfix:after { clear: both; }
+
+@media only screen and (max-width: $tablet) {
+  .menu {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    right: 0;
+
+    > li {
+      display: block;
+      width: 100%;
+      margin: 0;
+
+      > a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        @include box-sizing();
+      }
+    }
+  }
+
+  .toggle {
+    display: block;
+    position: relative;
+    cursor: pointer;
+  }
+
+  #toggle:checked ~ .menu {
+    display: block;
+    opacity: 1;
+    z-index: $menu-index;
+  }
+}

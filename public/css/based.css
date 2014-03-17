@@ -1,66 +1,96 @@
-/*
-Syntax error: Mixin "media" does not accept a content block.
-        on line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss, in `media'
-        from line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
 
-36:   background: orange;
-37:   z-index: 1000;
-38: }
-39: 
-40: .main {
-41:     @include media($desktop) {
-42: //        @include outer-container;
-43:     }
-44: 
-45:     .title {
-46:         @include media($desktop) {
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0; }
 
-Backtrace:
-/Users/meandave/Code/Projects/pdx-parks/public/css/based.scss:41:in `media'
-/Users/meandave/Code/Projects/pdx-parks/public/css/based.scss:41
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:254:in `visit_mixin'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:318:in `visit_rule'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:107:in `block in visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:119:in `with_environment'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:106:in `visit_children'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:126:in `visit_root'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:98:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/tree/root_node.rb:20:in `render'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/engine.rb:315:in `_render'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/engine.rb:262:in `render'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:340:in `update_stylesheet'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:200:in `each'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/plugin.rb:81:in `update_stylesheets'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:417:in `watch_or_update'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:307:in `process_result'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:41:in `parse'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/lib/sass/exec.rb:21:in `parse!'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/gems/sass-3.2.2/bin/sass:8:in `<top (required)>'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/bin/sass:19:in `load'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286/bin/sass:19:in `<main>'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286@global/bin/ruby_noexec_wrapper:14:in `eval'
-/Users/meandave/.rvm/gems/ruby-1.9.3-p286@global/bin/ruby_noexec_wrapper:14:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Mixin \"media\" does not accept a content block.\A         on line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss, in `media'\A         from line 41 of /Users/meandave/Code/Projects/pdx-parks/public/css/based.scss\A \A 36:   background: orange;\A 37:   z-index: 1000;\A 38: }\A 39: \A 40: .main {\A 41:     @include media($desktop) {\A 42: //        @include outer-container;\A 43:     }\A 44: \A 45:     .title {\A 46:         @include media($desktop) {"; }
+html, body {
+  height: 100%;
+  background: #F2F2F2; }
+
+body, a {
+  font: normal 16px Helvetica, Verdana, Geneva, sans-serif;
+  color: #3F3F3F; }
+
+.container {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; }
+
+.container:after {
+  content: '';
+  display: block;
+  height: 30px;
+  clear: both; }
+
+.footer {
+  height: 12px;
+  padding: 8px 0;
+  background: #FFF;
+  border-top: 1px solid #51C1F1;
+  font-size: 12px;
+  text-align: center; }
+
+body {
+  font-family: helvetica;
+  color: #525252; }
+
+a {
+  text-decoration: none;
+  color: #3ABB92; }
+
+.search input {
+  margin: 15px;
+  margin-right: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  width: 200px; }
+
+.control {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  background: orange;
+  z-index: 1000; }
+
+.main {
+  /*   line-height: 10px; */
+  /*   background-color: #dddddd; */
+  /*   width: 100%; */
+  /*   height: 60px; */
+  /*   z-index: 777; */
+  /*   border-bottom: 2px solid #969595; */
+  /*   border-radius: 3px; */ }
+
+/* .nav li { */
+/*     display: inline-block; */
+/*     float: right; */
+/* } */
+/* need to add handler for window.onresize, that will override these defaults,
+ * or maybe this should be handled with media queries? 
+ */
+#map {
+  width: 1000px;
+  height: 400px; }
+
+#control {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  color: #EBEBEB;
+  padding: 15px;
+  border-radius: 2px; }
+
+#control a {
+  float: right; }
+
+.leaflet-popup-content {
+  text-align: center !important; }

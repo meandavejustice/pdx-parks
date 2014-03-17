@@ -1,15 +1,45 @@
-@import "bourbon/bourbon";
-@import "neat/neat";
+@import 'header/header';
 
-$desktop: new-breakpoint(min-width 768px 12);
-$tablet: new-breakpoint(max-width 768px 1);
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  }
 
-.container {
-  margin-left: 0px;
-}
+html, body{
+  height: 100%;
+  background: #F2F2F2;
+  }
+
+body, a{
+  font: normal 16px Helvetica, Verdana, Geneva, sans-serif;
+  color: #3F3F3F;
+  }
+
+.container{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px;
+  }
+
+.container:after{
+  content: '';
+  display: block;
+  height: 30px;
+  clear: both;
+  }
+
+.footer{
+  height: 12px;
+  padding: 8px 0;
+  background: #FFF;
+  border-top: 1px solid #51C1F1;
+  font-size: 12px;
+  text-align: center;
+  }
 
 body {
-  margin: 0;
   font-family: helvetica;
   color: #525252;
 }
@@ -19,7 +49,7 @@ a {
   color: #3ABB92;
 }
 
-input {
+.search input {
   margin: 15px;
   margin-right: 5px;
   padding: 5px;
@@ -37,60 +67,6 @@ input {
   z-index: 1000;
 }
 
-.main {
-    @include media($desktop) {
-//        @include outer-container;
-      padding: 0 70px;
-    }
-
-    .title {
-        @include media($desktop) {
-            @include span-columns(5);
-        }
-
-        @include media($tablet) {
-            display: block;
-        }
-
-        h1 {
-            display: inline-block;
-        }
-        .search {
-          display: inline-block;
-          position: absolute;
-          top: 0px;
-        }
-    }
-
-    .nav {
-        @include media($desktop) {
-            @include span-columns(7);
-        }
-        @include media($tablet) {
-            display: inline-block;
-        }
-
-        li {
-          padding: 5px 12px;
-        }
-    }
-}
-
-/* header */
-.main {
-  line-height: 10px;
-  background-color: #dddddd;
-  width: 100%;
-  height: 60px;
-  z-index: 777;
-  border-bottom: 2px solid #969595;
-  border-radius: 3px;
-}
-
-.nav li {
-    display: inline-block;
-    float: right;
-}
 
 /* need to add handler for window.onresize, that will override these defaults,
  * or maybe this should be handled with media queries? 
@@ -98,6 +74,10 @@ input {
 #map {
   width: 1000px;
   height: 400px;
+}
+
+h1 {
+  font-size: 22px;
 }
 
 #control {
@@ -117,4 +97,13 @@ input {
 // leaflet popup override
 .leaflet-popup-content {
   text-align: center !important;
+}
+
+@media only screen and (max-width: 479px) {
+  #control {
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    left: 0;
+  }
 }

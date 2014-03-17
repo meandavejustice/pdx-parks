@@ -1,13 +1,170 @@
-* {
+/*
+ * This is a Fork of Navigataur from Mike King (@mixjamking)
+ *
+ */
+.header {
+  position: relative; }
+
+#toggle, .toggle {
+  display: none; }
+
+.menu > li {
+  list-style: none;
+  float: left; }
+
+/* Nicolas Gallagher micro clearfix */
+.clearfix:before, .clearfix:after {
+  display: table;
+  content: ""; }
+
+.clearfix:after {
+  clear: both; }
+
+@media only screen and (max-width: 768px) {
+  .menu {
+    display: none;
+    opacity: 0;
+    width: 100%;
+    position: absolute;
+    right: 0; }
+    .menu > li {
+      display: block;
+      width: 100%;
+      margin: 0; }
+      .menu > li > a {
+        display: block;
+        width: 100%;
+        text-decoration: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box; }
+  .toggle {
+    display: block;
+    position: relative;
+    cursor: pointer; }
+  #toggle:checked ~ .menu {
+    display: block;
+    opacity: 1;
+    z-index: 1; } }
+
+.header {
+  min-height: 80px;
+  height: 100%;
+  padding: 0 20px;
+  background: #dddddd; }
+  .header > h1 {
+    float: left;
+    padding: 30px 0 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit; }
+
+.nav {
+  display: block;
+  float: right; }
+
+.nav, .menu, .menu > li, .menu > li > a {
+  max-height: 80px;
+  height: 100%; }
+
+.menu > li > a {
+  display: block;
+  padding: 42px 20px;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 1;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+  .menu > li > a:hover, .menu > li > a:focus {
+    background: #ddd;
+    border-bottom: 1px solid #eeeeee;
+    color: #3ABB92;
+    padding: 50px 20px 34px; }
+
+.toggle {
+  z-index: 2;
+  display: inline-block; }
+
+@media only screen and (max-width: 768px) {
+  .header h1 {
+    display: inline-block; }
+  .menu {
+    background: #dddddd;
+    border-top: 1px solid #969595; }
+    .menu .nav {
+      float: right;
+      display: inline-block !important; }
+  .menu, .menu > li, .menu > li > a {
+    height: auto; }
+  .menu > li > a {
+    padding: 15px 15px; }
+  .menu > li > a:hover, .menu > li > a:focus {
+    background: #F2F2F2;
+    padding: 15px 15px 15px 25px; }
+  .toggle:after {
+    content: '☰';
+    display: block;
+    margin: 22px;
+    padding: 5px;
+    background: #333333;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 12px;
+    color: #000000;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box; }
+  .toggle:hover:after {
+    background: #333333; }
+  #toggle:checked + .toggle:after {
+    color: #000000; } }
+
+@media only screen and (max-width: 479px) {
+  .header > h1 {
+    text-align: center; }
+  .header > h1, .toggle:after {
+    float: none; }
+  .toggle:after {
+    text-align: center;
+    width: 25px; } }
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0; }
+
+html, body {
+  height: 100%;
+  background: #F2F2F2; }
+
+body, a {
+  font: normal 16px Helvetica, Verdana, Geneva, sans-serif;
+  color: #3F3F3F; }
 
 .container {
-  margin-left: 0px; }
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -30px; }
+
+.container:after {
+  content: '';
+  display: block;
+  height: 30px;
+  clear: both; }
+
+.footer {
+  height: 12px;
+  padding: 8px 0;
+  background: #FFF;
+  border-top: 1px solid #51C1F1;
+  font-size: 12px;
+  text-align: center; }
 
 body {
-  margin: 0;
   font-family: helvetica;
   color: #525252; }
 
@@ -15,7 +172,7 @@ a {
   text-decoration: none;
   color: #3ABB92; }
 
-input {
+.search input {
   margin: 15px;
   margin-right: 5px;
   padding: 5px;
@@ -31,60 +188,15 @@ input {
   background: orange;
   z-index: 1000; }
 
-@media screen and (min-width: 768px) {
-  .main {
-    padding: 0 70px; } }
-@media screen and (min-width: 768px) {
-  .main .title {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 40.29137%; }
-    .main .title:last-child {
-      margin-right: 0; } }
-@media screen and (max-width: 768px) {
-  .main .title {
-    display: block; } }
-.main .title h1 {
-  display: inline-block; }
-.main .title .search {
-  display: inline-block;
-  position: absolute;
-  top: 0px; }
-@media screen and (min-width: 768px) {
-  .main .nav {
-    float: left;
-    display: block;
-    margin-right: 2.35765%;
-    width: 57.35098%; }
-    .main .nav:last-child {
-      margin-right: 0; } }
-@media screen and (max-width: 768px) {
-  .main .nav {
-    display: inline-block; } }
-.main .nav li {
-  padding: 5px 12px; }
-
-/* header */
-.main {
-  line-height: 10px;
-  background-color: #dddddd;
-  width: 100%;
-  height: 60px;
-  z-index: 777;
-  border-bottom: 2px solid #969595;
-  border-radius: 3px; }
-
-.nav li {
-  display: inline-block;
-  float: right; }
-
 /* need to add handler for window.onresize, that will override these defaults,
  * or maybe this should be handled with media queries? 
  */
 #map {
   width: 1000px;
   height: 400px; }
+
+h1 {
+  font-size: 22px; }
 
 #control {
   position: absolute;
@@ -100,3 +212,10 @@ input {
 
 .leaflet-popup-content {
   text-align: center !important; }
+
+@media only screen and (max-width: 479px) {
+  #control {
+    position: fixed;
+    bottom: 0;
+    width: 95%;
+    left: 0; } }

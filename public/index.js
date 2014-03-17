@@ -10,6 +10,7 @@ var resetButton = document.getElementsByClassName('reset')[0];
 var anotherButton = document.getElementsByClassName('another')[0];
 var searchInput = document.getElementsByTagName('input')[0];
 var dismissDir = document.querySelector('#control a');
+var controlDir = document.querySelector('#control');
 
 var defaultLocation = {
   lat: 45.523425,
@@ -186,6 +187,12 @@ function resetMap() {
   anotherButton.addEventListener('click', findAnotherPark, false);
   dismissDir.addEventListener('click', function(ev) {
     ev.currentTarget.parentElement.remove()
+  }, false);
+  controlDir.addEventListener('touchstart', function(ev) {
+    ev.preventDefault();
+    var y = ev.pageY;
+    controlDir.style.bottom = -y;
+
   }, false);
   setMapWidth();
   window.onload = genMap();
