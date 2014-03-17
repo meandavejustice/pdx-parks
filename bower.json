@@ -17,8 +17,6 @@
     "tests"
   ],
   "dependencies": {
-    "inuit-starter-kit": "~0.1.1",
-    "inuit-layout": "~0.1.2",
-    "inuit.css": "~5.0.0"
+    "css-modal": "~1.0.4"
   }
 }
