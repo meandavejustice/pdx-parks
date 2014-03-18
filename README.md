@@ -2,15 +2,12 @@
 
 Find a park near you.
 
-Uses Open Layers Api for mapping.
+Uses civic apps & Open Layers Api for mapping.
 
 ## Running
 
 * `npm install`
-* `bower install`
-* `cd public/vendor/css-modals`
-* `sass modal.scss > modal.css`
-* `....`
+* `npm run build-css`
 * `node server.js`
 * `open 127.0.0.1:3000`
 
