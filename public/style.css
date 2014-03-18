@@ -51,17 +51,18 @@
   min-height: 80px;
   height: 100%;
   padding: 0 20px;
-  background: #dddddd; }
+  background: #dddddd;
+  border-bottom: 1px solid #A0A0A0; }
   .header > h1 {
     float: left;
     padding: 30px 0 0;
     font-family: inherit;
-    font-size: inherit;
     color: inherit; }
 
 .nav {
   display: block;
-  float: right; }
+  float: right;
+  text-align: center; }
 
 .nav, .menu, .menu > li, .menu > li > a {
   max-height: 80px;
@@ -69,7 +70,7 @@
 
 .menu > li > a {
   display: block;
-  padding: 42px 20px;
+  padding: 20px;
   text-decoration: none;
   font-weight: normal;
   font-size: 16px;
@@ -79,9 +80,10 @@
   box-sizing: border-box; }
   .menu > li > a:hover, .menu > li > a:focus {
     background: #ddd;
-    border-bottom: 1px solid #eeeeee;
-    color: #3ABB92;
-    padding: 50px 20px 34px; }
+    color: #3ABB92; }
+  .menu > li > a.submit {
+    display: inline;
+    padding: 0px; }
 
 .toggle {
   z-index: 2;
@@ -96,40 +98,42 @@
     .menu .nav {
       float: right;
       display: inline-block !important; }
-  .menu, .menu > li, .menu > li > a {
+  .menu, .menu > li {
+    background: #dddddd;
+    border-bottom: 1px solid #B3B3B3;
     height: auto; }
   .menu > li > a {
+    height: auto;
     padding: 15px 15px; }
   .menu > li > a:hover, .menu > li > a:focus {
-    background: #F2F2F2;
-    padding: 15px 15px 15px 25px; }
+    background-color: #F2F2F2; }
   .toggle:after {
     content: '☰';
     display: block;
     margin: 22px;
-    padding: 5px;
-    background: #333333;
+    padding: 4px 8px;
+    background: #A0A0A0;
     -webkit-border-radius: 2px;
     border-radius: 2px;
     text-align: center;
-    font-size: 12px;
+    font-size: 19px;
+    font-weight: bold;
     color: #000000;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
   .toggle:hover:after {
-    background: #333333; }
+    background: #808080; }
   #toggle:checked + .toggle:after {
-    color: #000000; } }
+    color: #000; } }
 
 @media only screen and (max-width: 479px) {
   .header > h1 {
     text-align: center; }
   .header > h1, .toggle:after {
-    float: none; }
+    float: left; }
   .toggle:after {
-    text-align: center;
-    width: 25px; } }
+    text-align: center; } }
 
 * {
   margin: 0;
@@ -147,22 +151,13 @@ body, a {
 .container {
   min-height: 100%;
   height: auto !important;
-  height: 100%;
-  margin: 0 auto -30px; }
+  height: 100%; }
 
 .container:after {
   content: '';
   display: block;
   height: 30px;
   clear: both; }
-
-.footer {
-  height: 12px;
-  padding: 8px 0;
-  background: #FFF;
-  border-top: 1px solid #51C1F1;
-  font-size: 12px;
-  text-align: center; }
 
 body {
   font-family: helvetica;
@@ -193,10 +188,13 @@ a {
  */
 #map {
   width: 1000px;
-  height: 400px; }
+  height: 400px;
+  overflow: hidden;
+  margin-left: -40px; }
 
 h1 {
-  font-size: 22px; }
+  font-size: 30px;
+  line-height: 22px; }
 
 #control {
   position: absolute;

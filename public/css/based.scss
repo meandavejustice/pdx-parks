@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   outline: 0;
-  }
+}
 
 html, body{
   height: 100%;
@@ -20,7 +20,7 @@ body, a{
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 0 auto -30px;
+ // margin: 0 auto -30px;
   }
 
 .container:after{
@@ -28,15 +28,6 @@ body, a{
   display: block;
   height: 30px;
   clear: both;
-  }
-
-.footer{
-  height: 12px;
-  padding: 8px 0;
-  background: #FFF;
-  border-top: 1px solid #51C1F1;
-  font-size: 12px;
-  text-align: center;
   }
 
 body {
@@ -74,10 +65,13 @@ a {
 #map {
   width: 1000px;
   height: 400px;
+  overflow: hidden;
+  margin-left: -40px;
 }
 
 h1 {
-  font-size: 22px;
+    font-size: 30px;
+    line-height: 22px;
 }
 
 #control {

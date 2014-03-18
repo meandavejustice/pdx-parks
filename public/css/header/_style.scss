@@ -3,12 +3,12 @@
   height: 100%;
   padding: 0 20px;
   background: $headerBg;
+  border-bottom: 1px solid #A0A0A0;
 
   > h1 {
     float: left;
     padding: 30px 0 0;
     font-family: $titleFont;
-    font-size: $titleSize;
     color: $titleColor;
   }
 }
@@ -16,6 +16,7 @@
 .nav {
   display: block;
   float: right;
+  text-align: center;
 }
 
 .nav, .menu, .menu > li, .menu > li > a {
@@ -25,19 +26,23 @@
 
 .menu > li > a {
   display: block;
-  padding: 42px 20px;
+  padding: 20px;
   text-decoration: none;
   font-weight: normal;
   font-size: 16px;
   line-height: 1;
   @include box-sizing();
 
-  &:hover, &:focus{
+  &:hover, &:focus {
     background: $navItemBg;
-    border-bottom: $navItemBorder;
     color: $navFocusColor;
-    padding: 50px 20px 34px;
   }
+
+  &.submit {
+      display: inline;
+      padding: 0px;
+  }
+
 }
 
 .toggle {
@@ -59,28 +64,31 @@
     }
   }
 
-  .menu, .menu > li, .menu > li > a {
-    height: auto;
+  .menu, .menu > li {
+      background: #dddddd;
+      border-bottom: 1px solid #B3B3B3;
+      height: auto;
   }
 
   .menu > li > a {
-    padding: 15px 15px;
+      height: auto;
+      padding: 15px 15px;
   }
 
   .menu > li > a:hover, .menu > li > a:focus {
-    background: #F2F2F2;
-    padding: 15px 15px 15px 25px;
+    background-color: #F2F2F2;
   }
 
   .toggle:after {
     content: $toggleMenuContent;
     display: block;
     margin: 22px;
-    padding: 5px;
+    padding: 4px 8px;
     background: $menuToggleBg;
     @include border-radius(2px);
     text-align: center;
-    font-size: 12px;
+    font-size: 19px;
+    font-weight: bold;
     color: $menuToggleColor;
     @include box-sizing();
   }
@@ -99,10 +107,9 @@
     text-align: center;
   }
   .header > h1, .toggle:after {
-    float: none;
+    float: left;
   }
   .toggle:after {
     text-align: center;
-    width: 25px;
   }
 }
