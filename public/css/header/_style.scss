@@ -107,9 +107,10 @@
     text-align: center;
   }
   .header > h1, .toggle:after {
-    float: left;
+      float: left;
   }
   .toggle:after {
-    text-align: center;
+      text-align: center;
+      margin-right: 0px;
   }
 }

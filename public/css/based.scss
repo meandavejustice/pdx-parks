@@ -1,61 +1,64 @@
 @import 'header/header';
 
 * {
-  margin: 0;
-  padding: 0;
-  outline: 0;
+    margin: 0;
+    padding: 0;
+    outline: 0;
 }
 
-html, body{
-  height: 100%;
-  background: #F2F2F2;
-  }
+html, body {
+    height: 100%;
+    background: #F2F2F2;
+}
 
-body, a{
-  font: normal 16px Helvetica, Verdana, Geneva, sans-serif;
-  color: #3F3F3F;
-  }
+body, a {
+    font: normal 16px Helvetica, Verdana, Geneva, sans-serif;
+    color: #3F3F3F;
+}
 
-.container{
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
- // margin: 0 auto -30px;
-  }
+.container {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+}
 
-.container:after{
-  content: '';
-  display: block;
-  height: 30px;
-  clear: both;
-  }
+.container:after {
+    content: '';
+    display: block;
+    height: 30px;
+    clear: both;
+}
 
 body {
-  font-family: helvetica;
-  color: #525252;
+    font-family: helvetica;
+    color: #525252;
 }
 
 a {
-  text-decoration: none;
-  color: #3ABB92;
+    text-decoration: none;
+    color: #3ABB92;
+}
+
+ul {
+    list-style-position: inside;
 }
 
 .search input {
-  margin: 15px;
-  margin-right: 5px;
-  padding: 5px;
-  border-radius: 5px;
-  width: 200px;
+    margin: 15px;
+    margin-right: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    width: 200px;
 }
 
 .control {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  width: 200px;
-  height: 200px;
-  background: orange;
-  z-index: 1000;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 200px;
+    height: 200px;
+    background: orange;
+    z-index: 1000;
 }
 
 
@@ -63,9 +66,9 @@ a {
  * or maybe this should be handled with media queries? 
  */
 #map {
-  width: 1000px;
-  height: 400px;
-  overflow: hidden;
+    width: 1000px;
+    height: 400px;
+    overflow: hidden;
 }
 
 h1 {
@@ -74,17 +77,21 @@ h1 {
 }
 
 #control {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  color: #EBEBEB;
-  padding: 15px;
-  border-radius: 2px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: #EBEBEB;
+    padding: 15px;
+    border-radius: 2px;
+
+    a {
+        float: right;
+    }
 }
 
-#control a {
-  float: right;
+.modals section {
+    z-index: 100000;
 }
 
 // leaflet popup override
@@ -93,14 +100,14 @@ h1 {
 }
 
 @media only screen and (max-width: 479px) {
-  #control {
-    position: fixed;
-    bottom: 0;
-    width: 95%;
-    left: 0;
-  }
+    #control {
+        position: fixed;
+        bottom: 0;
+        width: 95%;
+        left: 0;
+    }
 
-  #map {
-      margin-left: -40px;
-  }
+    #map {
+        margin-left: -40px;
+    }
 }

@@ -17,6 +17,7 @@
     "tests"
   ],
   "dependencies": {
-    "css-modal": "~1.0.4"
+    "css-modal": "~1.0.4",
+    "humane-js": "1284b1d3480c05f1bd4e29057a5a861980a825dc"
   }
 }

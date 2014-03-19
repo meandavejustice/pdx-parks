@@ -1,109 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
-  <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon" />
-  <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
-  <link rel="stylesheet" href="public/style.css" type="text/css" media="screen" />
-  <link rel="stylesheet" href="public/vendor/css-modal/modal.css" type="text/css" media="screen" />
-  <meta name="viewport" content="width=device-width">
-</head>
-<body>
-  <div class="container">
-    <header class="header clearfix">
-      <h1>PDX Parks</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
+    <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+    <link rel="stylesheet" href="public/style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="public/vendor/humane-js/themes/flatty.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="public/vendor/css-modal/modal.css" type="text/css" media="screen" />
+    <meta name="viewport" content="width=device-width">
+  </head>
+  <body>
+    <div class="container">
+      <header class="header clearfix">
+        <h1>PDX Parks</h1>
 
-      <div class="nav">
-        <input type="checkbox" id="toggle" />
-        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
-        <ul class="menu">
-          <li class="search">
-            <input type="text" name="location" placeholder="Your location here"/>
-            <a class="submit" href="javascript:void(0)">Go!</a>
-          </li>
-          <li><a href="#help" class="call-modal">Help</a></li>
-          <li><a href="#about">About</a></li>
-          <li class="reset"><a href="javascript:void(0);">Reset</a></li>
-          <li class="another"><a href="javascript:void(0);">Find another park</a></li>
-        </ul>
+        <div class="nav">
+          <input type="checkbox" id="toggle" />
+          <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick></label>
+          <ul class="menu">
+            <li class="search">
+              <input type="text" name="location" placeholder="Your location here"/>
+              <a class="submit" href="javascript:void(0)">Go!</a>
+            </li>
+            <li class="reset"><a href="javascript:void(0);">Reset</a></li>
+            <li class="another"><a href="javascript:void(0);">Find another park</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#help" class="call-modal">Help</a></li>
+          </ul>
+        </div>
+      </header>
+
+      <div id="map"></div>
+      <div id="control">
+        <div id="route-narrative"></div>
+        <a href="javascript:void(0)">dismiss</a>
       </div>
-    </header>
-
-    <div id="map"></div>
-    <div id="control">
-      <div id="route-narrative"></div>
-      <a href="javascript:void(0)">dismiss</a>
     </div>
-  </div>
 
+    <!-- modals -->
+    <div class="modals">
+      <section class="semantic-content" id="help" tabindex="-1"
+               role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
+        <div class="modal-inner">
+          <header id="modal-label">Help</header>
+          <div class="modal-content">
+            <h4>Not getting your location?</h4>
+            <ul>
+              <li>Make sure you "Allowed" geolocation</li>
+              <li>Try resetting the location</li>
+              <li>Manually input your location in the search bar</li>
+            </ul>
 
-
-
-
-
-<!-- modals down here -->
-  <div class="modals">
-  <section class="semantic-content" id="help" tabindex="-1"
-        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
-
-    <div class="modal-inner">
-        <header id="modal-label">Help</header>
-        <div class="modal-content">
-          <h4>Not getting your location?</h4>
-          <ul>
-            <li>Make sure you "Allowed" geolocation</li>
-            <li>Try resetting the location</li>
-            <li>Manually input your location in the search bar</li>
-          </ul>
-
-          <h4>Incorrect Directions?</h4>
-          <p>If directions are being returned improperly you can always <a href="https://github.com/meandavejustice/pdx-parks/">create an issue</a></p>
+            <h4>Incorrect Directions?</h4>
+            <p>If directions are being returned improperly you can always <a href="https://github.com/meandavejustice/pdx-parks/">create an issue</a></p>
+          </div>
         </div>
-    </div>
 
-    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-        data-dismiss="modal">×</a>
-  </section>
+        <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+           data-dismiss="modal">×</a>
+      </section>
 
-    <section class="semantic-content" id="about" tabindex="-1"
-        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+      <section class="semantic-content" id="about" tabindex="-1"
+               role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
-    <div class="modal-inner">
-        <header id="modal-label">About</header>
-        <div class="modal-content">
-          <p>This was written as a simple demonstration of Portland's civic apps api. If you'd like to contribute, you can
-            fork the project at <a href="https://github.com/meandavejustice/pdx-parks/">https://github.com/meandavejustice/pdx-parks/</a>.</p>
+        <div class="modal-inner">
+          <header id="modal-label">About</header>
+          <div class="modal-content">
+            <p>This was written as a simple demonstration of Portland's civic apps api. If you'd like to contribute, you can
+              fork the project at <a href="https://github.com/meandavejustice/pdx-parks/">https://github.com/meandavejustice/pdx-parks/</a>.</p>
 
-          <h3>Technologies</h3>
-          <ul>
-            <li><a href="">LeafletJS</a></li>
-            <li><a href="">Civic Apps Api</a></li>
-            <li><a href="">Open Layers Api</a></li>
-            <li><a href="">Mapquest's Open Directions Api</a></li>
-          </ul>
+            <h3>Technologies</h3>
+            <ul>
+              <li><a href="">LeafletJS</a></li>
+              <li><a href="">Civic Apps Api</a></li>
+              <li><a href="">Open Layers Api</a></li>
+              <li><a href="">Mapquest's Open Directions Api</a></li>
+            </ul>
 
-          <h3>Contact me</h3>
-          <ul>
-             <li><a href="https://github.com/meandavejustice/">Github</a></li>
-             <li><a href="https://twitter.com/meandave2020/">Twitter</a></li>
-             <li><a href="https://meandavejustice.github.io/">Blog</a></li>
-          </ul>
+            <h3>Contact me</h3>
+            <ul>
+              <li><a href="https://github.com/meandavejustice/">Github</a></li>
+              <li><a href="https://twitter.com/meandave2020/">Twitter</a></li>
+              <li><a href="https://meandavejustice.github.io/">Blog</a></li>
+            </ul>
 
+          </div>
         </div>
-    </div>
 
-    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
-        data-dismiss="modal">×</a>
-  </section>
+        <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+           data-dismiss="modal">×</a>
+      </section>
 
-  </div>
-  <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
-  <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
-  <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-routing.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
-  <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-geocoding.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
-  <script src="public/vendor/css-modal/modal.js"></script>
-  <script src="public/index.js" type="text/javascript"></script>
-</body>
+    </div><!-- end modals -->
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+    <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
+    <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-routing.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
+    <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-geocoding.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>
+    <script src="public/vendor/humane-js/humane.min.js"></script>
+    <script src="public/vendor/css-modal/modal.js"></script>
+    <script src="public/index.js" type="text/javascript"></script>
+  </body>
 </html>

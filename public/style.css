@@ -133,7 +133,8 @@
   .header > h1, .toggle:after {
     float: left; }
   .toggle:after {
-    text-align: center; } }
+    text-align: center;
+    margin-right: 0px; } }
 
 * {
   margin: 0;
@@ -166,6 +167,9 @@ body {
 a {
   text-decoration: none;
   color: #3ABB92; }
+
+ul {
+  list-style-position: inside; }
 
 .search input {
   margin: 15px;
@@ -203,9 +207,11 @@ h1 {
   color: #EBEBEB;
   padding: 15px;
   border-radius: 2px; }
+  #control a {
+    float: right; }
 
-#control a {
-  float: right; }
+.modals section {
+  z-index: 100000; }
 
 .leaflet-popup-content {
   text-align: center !important; }
