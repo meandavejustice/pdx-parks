@@ -7,6 +7,7 @@ var app = express();
 
 app.use(logfmt.requestLogger());
 app.use('/public', express.static(__dirname + '/public'));
+app.use(express.favicon(__dirname + 'public/images/favicon.ico'));
 
 app.get('/', function(req, res){
   res.sendfile(__dirname + '/index.html')
