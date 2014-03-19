@@ -8,9 +8,9 @@
     "postinstall": "npm run bower-deps && npm run build-dep-css && npm run build-css",
     "bower-deps": "bower install",
     "start": "node server.js",
-    "watch-css": "jung -f '.scss$' -- npm run build-css",
-    "build-dep-css": "node-sass public/vendor/css-modal/modal.scss public/vendor/css-modal/modal.css",
-    "build-css": "node-sass public/css/based.scss public/style.css"
+    "watch-css": "jung -f '\\.scss$' -- npm run build-css",
+    "build-dep-css": "./node_modules/node-sass/bin/node-sass public/vendor/css-modal/modal.scss public/vendor/css-modal/modal.css",
+    "build-css": "./node_modules/node-sass/bin/node-sass public/css/based.scss public/style.css"
   },
   "repository": {
     "type": "git",
