@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" /> 
-
   <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
   <link rel="stylesheet" href="public/style.css" type="text/css" media="screen" />
   <link rel="stylesheet" href="public/vendor/css-modal/modal.css" type="text/css" media="screen" />
@@ -22,8 +21,8 @@
             <input type="text" name="location" placeholder="Your location here"/>
             <a class="submit" href="javascript:void(0)">Go!</a>
           </li>
-          <li class=""><a href="#help" class="call-modal">Help</a></li>
-          <li class=""><a href="#help">About</a></li>
+          <li><a href="#help" class="call-modal">Help</a></li>
+          <li><a href="#about">About</a></li>
           <li class="reset"><a href="javascript:void(0);">Reset</a></li>
           <li class="another"><a href="javascript:void(0);">Find another park</a></li>
         </ul>
@@ -49,42 +48,55 @@
         role="dialog" aria-labelledby="modal-label" aria-hidden="true">
 
     <div class="modal-inner">
-        <header id="modal-label">Halp</header>
+        <header id="modal-label">Help</header>
         <div class="modal-content">
-          <p>Anarcho ipsum dolor sit amet. Commune 1917 violence spain
-          savage action haymarket what civilization has done to ruling
-          class cuba World Trade Organization police.
+          <h4>Not getting your location?</h4>
+          <ul>
+            <li>Make sure you "Allowed" geolocation</li>
+            <li>Try resetting the location</li>
+            <li>Manually input your location in the search bar</li>
+          </ul>
 
-Anarchiste Spanish Civil War Spanish Civil War 1848 savage when the
-revolution comes when the revolution comes aggresion what civilization
-has done to balaclava... Activism haymarket 1917 philosophy formed an
-apparatus covertly against coercive anarcha organisation formed an
-apparatus covertly against intentional communities faction. Industrial
-balaclava pacifism newspaper pigs collectivist ruling class
-authoritarian capitalists spain syndicalist paris! Berkman propaganda
-socialist anarcha the coming insurrection WTO anti-fascist. Rights
-autonomy ideas haymarket pussy riot socialist collectivist activism
-direct action McKinley workers. Direct action flag Bakunin state noam
-chomsky youth haymarket haymarket.
-
-Aggresion solidarity indigenous industrial industrial WTO Bakunin
-propaganda ideas relegated to. Equality ruling class noam chomsky pigs
-relegated to Bakunin youth syndicalist is war machines relegated to
-black emma goldman. Emma goldman insurrection is war machines pacifism
-formed an apparatus covertly against is war machines pigs organisation
-anarcho? Coercive savage newspaper propaganda of the deed bourgeois
-bourgeois emma goldman revolution struggle. Rights ideas direct action
-noam chomsky to the proletariat relegated to collectivist
-violence. Collectivist relegated to police police Commune Commune
-propaganda.
-          </p>
+          <h4>Incorrect Directions?</h4>
+          <p>If directions are being returned improperly you can always <a href="https://github.com/meandavejustice/pdx-parks/">create an issue</a></p>
         </div>
-        <footer><!-- Footer --></footer>
     </div>
 
     <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
         data-dismiss="modal">×</a>
   </section>
+
+    <section class="semantic-content" id="about" tabindex="-1"
+        role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+
+    <div class="modal-inner">
+        <header id="modal-label">About</header>
+        <div class="modal-content">
+          <p>This was written as a simple demonstration of Portland's civic apps api. If you'd like to contribute, you can
+            fork the project at <a href="https://github.com/meandavejustice/pdx-parks/">https://github.com/meandavejustice/pdx-parks/</a>.</p>
+
+          <h3>Technologies</h3>
+          <ul>
+            <li><a href="">LeafletJS</a></li>
+            <li><a href="">Civic Apps Api</a></li>
+            <li><a href="">Open Layers Api</a></li>
+            <li><a href="">Mapquest's Open Directions Api</a></li>
+          </ul>
+
+          <h3>Contact me</h3>
+          <ul>
+             <li><a href="https://github.com/meandavejustice/">Github</a></li>
+             <li><a href="https://twitter.com/meandave2020/">Twitter</a></li>
+             <li><a href="https://meandavejustice.github.io/">Blog</a></li>
+          </ul>
+
+        </div>
+    </div>
+
+    <a href="#!" class="modal-close" title="Close this modal" data-close="Close"
+        data-dismiss="modal">×</a>
+  </section>
+
   </div>
   <script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
   <script src="http://beta.mapquestapi.com/sdk/leaflet/v0.1/mq-map.js?key=Fmjtd%7Cluur210yn5%2Cas%3Do5-90yagy"></script>

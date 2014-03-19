@@ -1,6 +1,6 @@
 // Add handler for "getting your location"
-// Add marker popups
-// Add directions modal or something like dat
+// Add better marker popups
+// Be able to recreate directions modal once it is dismissed
 
 var map, mapLayer, dir, hasGeo, zoom, parks, dirLayer, currentLocation;
 
@@ -102,7 +102,6 @@ function updateMap(newLocation) {
         popupAnchor: [0, -29]
       });
 
-      debugger;
       var markerStr = parks[count].Property + '<br>' + location.street;
       if (isCurrentLocation(location.latLng)) {
         markerStr = 'You are Here <br>' + location.street;
@@ -181,7 +180,7 @@ function resetMap() {
     .reverse({lat: defaultLocation.lat, lng: defaultLocation.lon})
 }
 
-(function() {
+function addListeners() {
   submitButton.addEventListener('click', manualLoc, false);
   resetButton.addEventListener('click', resetMap, false);
   anotherButton.addEventListener('click', findAnotherPark, false);
@@ -194,6 +193,10 @@ function resetMap() {
     controlDir.style.bottom = -y;
 
   }, false);
+}
+
+(function() {
+  addListeners();
   setMapWidth();
   window.onload = genMap();
   getLocation();
