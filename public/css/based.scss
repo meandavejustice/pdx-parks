@@ -66,7 +66,6 @@ a {
   width: 1000px;
   height: 400px;
   overflow: hidden;
-  margin-left: -40px;
 }
 
 h1 {
@@ -90,7 +89,7 @@ h1 {
 
 // leaflet popup override
 .leaflet-popup-content {
-  text-align: center !important;
+    text-align: center !important;
 }
 
 @media only screen and (max-width: 479px) {
@@ -99,5 +98,9 @@ h1 {
     bottom: 0;
     width: 95%;
     left: 0;
+  }
+
+  #map {
+      margin-left: -40px;
   }
 }

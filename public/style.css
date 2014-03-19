@@ -45,7 +45,7 @@
   #toggle:checked ~ .menu {
     display: block;
     opacity: 1;
-    z-index: 1; } }
+    z-index: 10000; } }
 
 .header {
   min-height: 80px;
@@ -189,8 +189,7 @@ a {
 #map {
   width: 1000px;
   height: 400px;
-  overflow: hidden;
-  margin-left: -40px; }
+  overflow: hidden; }
 
 h1 {
   font-size: 30px;
@@ -216,4 +215,6 @@ h1 {
     position: fixed;
     bottom: 0;
     width: 95%;
-    left: 0; } }
+    left: 0; }
+  #map {
+    margin-left: -40px; } }
