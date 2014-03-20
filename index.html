@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width, maximum-scale=1.0" />
+    <meta name="description" content="This is a simple tool to find parks close to you in Portland, Oregon." />
+
     <link rel="shortcut icon" href="public/img/favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
     <link rel="stylesheet" href="public/style.css" type="text/css" media="screen" />
-    <link rel="stylesheet" href="public/vendor/humane-js/themes/flatty.css" type="text/css" media="screen" />
     <link rel="stylesheet" href="public/vendor/css-modal/modal.css" type="text/css" media="screen" />
-    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="public/vendor/humane-js/themes/flatty.css" type="text/css" media="screen" />
+    <meta name="viewport" content="width=device-width" />
   </head>
   <body>
     <div class="container">
@@ -25,7 +27,7 @@
             </li>
             <li class="reset"><a href="javascript:void(0);">Reset</a></li>
             <li class="another"><a href="javascript:void(0);">Find another park</a></li>
-            <li><a href="#about">About</a></li>
+            <li><a href="#about" class="call-modal">About</a></li>
             <li><a href="#help" class="call-modal">Help</a></li>
           </ul>
         </div>
@@ -41,10 +43,10 @@
     <!-- modals -->
     <div class="modals">
       <section class="semantic-content" id="help" tabindex="-1"
-               role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+               role="dialog" aria-labelledby="modal-label-help" aria-hidden="true">
 
         <div class="modal-inner">
-          <header id="modal-label">Help</header>
+          <header id="modal-label-help">Help</header>
           <div class="modal-content">
             <h4>Not getting your location?</h4>
             <ul>
@@ -63,10 +65,10 @@
       </section>
 
       <section class="semantic-content" id="about" tabindex="-1"
-               role="dialog" aria-labelledby="modal-label" aria-hidden="true">
+               role="dialog" aria-labelledby="modal-label-about" aria-hidden="true">
 
         <div class="modal-inner">
-          <header id="modal-label">About</header>
+          <header id="modal-label-about">About</header>
           <div class="modal-content">
             <p>This was written as a simple demonstration of Portland's civic apps api. If you'd like to contribute, you can
               fork the project at <a href="https://github.com/meandavejustice/pdx-parks/">https://github.com/meandavejustice/pdx-parks/</a>.</p>
