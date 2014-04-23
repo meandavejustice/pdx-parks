@@ -7,11 +7,15 @@ Uses civic apps & Open Layers Api for mapping.
 ## Running
 
 * `npm install`
-* `npm run build-css`
+* `npm run build-css` (There is a bug in libsass with placeholder derivatives, you
+may have to run this with the ruby sass cli. I am consciously checking in the compiled
+css for this reason)
 * `node server.js`
 * `open 127.0.0.1:3000`
 
-## THIS IS UNFINISHED!
+## Notes:
+bower_components are checked in because of a bug with heroku trying to install
+from bower from a commit SHA.
 
-This still needs a lot of love, plans are to wrap this up with cordova
-after the web version is complete.
+## Contributing
+There are a bunch of todos, just check the issues.

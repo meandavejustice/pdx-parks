@@ -1,7 +1,7 @@
 var express = require('express');
 var request = require('request');
 var logfmt = require('logfmt');
-var keepAlive = require('keep-alive')('http://pdx-parks.org.com', 1800000);
+var keepAlive = require('keep-alive')('http://pdx-parks.org', 1800000);
 var deparam = require('node-jquery-deparam');
 var port = Number(process.env.PORT || 3000);
 var app = express();
@@ -16,7 +16,6 @@ app.get('/', function(req, res){
 
 app.get('/parks', function(req, res){
   var queryData = deparam(req.url.split('?')[1]);
-  console.log(queryData);
   request.get('http://api.civicapps.org/parks/near/'+ queryData.lon +','+ queryData.lat +'?count=5')
     .pipe(res);
 });

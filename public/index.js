@@ -1,23 +1,13 @@
-// Add better marker popups
+// get rid of some of these globals
+var map, mapLayer, hasGeo, parks, dirLayer, currentLocation;
 
-// fix map not redrawing correctly
-
-// add a function to check if the User's location is way
-// outside of portland, if so, we will alert the user and give
-// them the option to proceed, or set to portland's center, or manually input
-// a location to search from.
-
-// add a list of popular starting points.
-
-var map, mapLayer, dir, hasGeo, zoom, parks, dirLayer, currentLocation;
-
-var count = 0;
-var submitButton = document.querySelector('.submit');
-var resetButton = document.querySelector('.reset');
+var count         = 0;
+var submitButton  = document.querySelector('.submit');
+var resetButton   = document.querySelector('.reset');
 var anotherButton = document.querySelector('.another');
-var searchInput = document.querySelector('.search input');
-var dismissDir = document.querySelector('#control a');
-var controlDir = document.getElementById('control');
+var searchInput   = document.querySelector('.search input');
+var dismissDir    = document.querySelector('#control a');
+var controlDir    = document.getElementById('control');
 
 // This is the Center of Downtown Portland, Oregon
 var defaultLocation = {
@@ -32,14 +22,14 @@ if ("geolocation" in navigator) {
 }
 
 function fixLocationObject(location) {
-    if (location.lon) {
-        location.lng = location.lon;
-    } else if (location.latitude) {
-        location.lat = location.latitude;
-        location.lng = location.longitude;
-    }
+  if (location.lon) {
+    location.lng = location.lon;
+  } else if (location.latitude) {
+    location.lat = location.latitude;
+    location.lng = location.longitude;
+  }
 
-    return location;
+  return location;
 }
 
 // This gives us a rough idea if the passed object
@@ -59,25 +49,22 @@ function isCurrentLocation(loc) {
   }
 }
 
-// May want to do some more customizing here, but atm looks good
 function genMap() {
   mapLayer = MQ.mapLayer(),
-  
+
   map = L.map('map', {
     layers: mapLayer,
     center: [defaultLocation.lat, defaultLocation.lng],
     zoom: 13
   });
-    var customIcon = L.icon({
-        iconUrl: '/public/img/marker-24.png',
-        iconSize: [24, 24],
-        iconAnchor: [10, 24],
-        popupAnchor: [0, -24]
-    });
 
-    
-//    L.Icon.Default = customIcon;
-    
+  var customIcon = L.icon({
+    iconUrl: '/public/img/marker-24.png',
+    iconSize: [24, 24],
+    iconAnchor: [10, 24],
+    popupAnchor: [0, -24]
+  });
+
   L.control.layers({
     'Map': mapLayer,
     'Satellite': MQ.satelliteLayer(),
@@ -88,39 +75,33 @@ function genMap() {
 // maybe make a check for parks array here,
 // that way we can avoid more checks in updateMap function
 function closestParkSuccess(res) {
-    parks = JSON.parse(res.target.response).results;
-    updateMap(fixLocationObject(parks[count].loc));
+  parks = JSON.parse(res.target.response).results;
+  updateMap(fixLocationObject(parks[count].loc));
 }
 
-// This is a pretty giant function that should probably be
-// broken up into multiple small functions.
-// We may want to access some of these things without updating
-// the entire map.
 function updateMap(newLocation) {
   if (dirLayer) map.removeLayer(dirLayer);
 
   var parkData = parks[count];
 
-  dir = MQ.routing.directions()
+  var dir = MQ.routing.directions()
     .on('success', function(data) {
       var legs = data.route.legs,
-      html = '',
-      maneuvers,
-      i;
-      
+          html = '',
+          maneuvers,
+          i;
+
       if (legs && legs.length) {
         maneuvers = legs[0].maneuvers;
-        
+
         for (i=0; i<maneuvers.length; i++) {
           html += (i+1) + '. ';
           html += maneuvers[i].narrative + '<br />';
         }
-          controlDir.style.display = 'block';
-          L.DomUtil.get('route-narrative').innerHTML = html;
+        controlDir.style.display = 'block';
+        L.DomUtil.get('route-narrative').innerHTML = html;
       }
     });
-
-  console.log('out routing coords', currentLocation, newLocation);
 
   dir.route({
     locations: [
@@ -130,27 +111,27 @@ function updateMap(newLocation) {
   });
 
   var CustomRouteLayer = MQ.Routing.RouteLayer.extend({
-      createStopMarker: function(location, stopNumber) {
-          var customIcon,
-              marker;
+    createStopMarker: function(location, stopNumber) {
+      var customIcon,
+          marker;
 
-          customIcon = L.icon({
-              iconUrl: '/public/img/marker-24.png',
-              iconSize: [22, 24],
-              iconAnchor: [10, 24],
-              popupAnchor: [0, -30]
-          });
-          
+      customIcon = L.icon({
+        iconUrl: '/public/img/marker-24.png',
+        iconSize: [22, 24],
+        iconAnchor: [10, 24],
+        popupAnchor: [0, -30]
+      });
+
       var markerStr = parks[count].Property + '<br>' + location.street;
       if (isCurrentLocation(location.latLng)) {
         markerStr = 'You are Here <br>' + location.street;
       }
 
-          marker = L.marker(location.latLng, {icon: customIcon})
+      marker = L.marker(location.latLng, {icon: customIcon})
         .bindPopup(markerStr)
         .openPopup()
         .addTo(map);
-      
+
       return marker;
     }
   });
@@ -168,27 +149,26 @@ function updateMap(newLocation) {
 }
 
 function onSuccess(position) {
-    var coords;
-    debugger;
-    if (position.coords) {
-        coords = fixLocationObject(position.coords);
-    } else {
-        coords = position;
-    }
+  var coords;
+  if (position.coords) {
+    coords = fixLocationObject(position.coords);
+  } else {
+    coords = position;
+  }
 
-    currentLocation = coords;
+  currentLocation = coords;
 
-    var req = new XMLHttpRequest();
-    req.onloadend = closestParkSuccess;
-    req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat+'&count=5');
-    req.send();
+  var req = new XMLHttpRequest();
+  req.onloadend = closestParkSuccess;
+  req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat+'&count=5');
+  req.send();
 }
 
 // this should probably be another type of alert that slides in from beneath
 // the header, sort of like the built in bootstrap alerts.
 function onError(err) {
-    humane.log("There was an issue getting your location, try inputting it manually");
-    console.warn('ERROR(' + err.code + '): ' + err.message);
+  humane.log("There was an issue getting your location, try inputting it manually");
+  console.warn('ERROR(' + err.code + '): ' + err.message);
 }
 
 // would like to be able to call this multiple times, so the user doesn't
@@ -219,66 +199,63 @@ function setMapWidth() {
 // users the same result twice, unless they do a reset or manually input
 // another location.
 function findAnotherPark() {
-    count++;
-    if (parks === undefined) {
-        onSuccess(currentLocation);
-        return;
-    } else if (count > parks.length) {
-        count = 0;
-    }
+  count++;
+  if (parks === undefined) {
+    onSuccess(currentLocation);
+    return;
+  } else if (count > parks.length) {
+    count = 0;
+  }
 
-    updateMap(parks[count].loc);
+  updateMap(parks[count].loc);
 }
 
-// handler for manually inputting location,
-// need to make sure we get the list of parks and draw the directions
-// on success, and add handler for error!
+// handler for manually inputing location
 function manualLoc() {
   MQ.geocode({ map: map })
     .search(searchInput.value)
     .on('success', function(ev) {
       var best = ev.result.best;
-        currentLocation = best.latlng;
-        onSuccess(currentLocation);
+      currentLocation = best.latlng;
+      onSuccess(currentLocation);
     })
     .on('error', function(err) {
-        humane.log('We had trouble finding that location, please try again');
+      humane.log('We had trouble finding that location, please try again');
     });
 }
 
 // reset the map to the default location(center of Portland, OR)
 function resetMap() {
-    currentLocation = defaultLocation;
+  currentLocation = defaultLocation;
   MQ.geocode({ map: map })
-    .reverse(defaultLocation)
+    .reverse(currentLocation);
 }
 
 // put all dom event handlers here in order to keep it clean
 function addListeners() {
+  window.onload = genMap();
 
-    window.onload = genMap();
+  var resizeTimer;
+  window.onresize = function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      setMapWidth();
+      mapLayer.redraw();
+      map.setView(currentLocation);
+    }, 100);
+  };
 
-    var resizeTimer;
-    window.onresize = function() {
-        clearTimeout(resizeTimer);
-        resizeTimer = setTimeout(function() {
-            setMapWidth();
-            mapLayer.redraw();
-            map.setView(currentLocation);
-        }, 100);
-    };
-
-    submitButton.addEventListener('click', manualLoc, false);
-    searchInput.addEventListener('keyup', function(ev) {
-        if (ev.keyCode == 13) {
-            manualLoc();
-        }
-    }, false);
-    resetButton.addEventListener('click', resetMap, false);
-    anotherButton.addEventListener('click', findAnotherPark, false);
+  submitButton.addEventListener('click', manualLoc, false);
+  searchInput.addEventListener('keyup', function(ev) {
+    if (ev.keyCode == 13) {
+      manualLoc();
+    }
+  }, false);
+  resetButton.addEventListener('click', resetMap, false);
+  anotherButton.addEventListener('click', findAnotherPark, false);
 
   dismissDir.addEventListener('click', function(ev) {
-      ev.currentTarget.parentElement.style.display = 'none';
+    ev.currentTarget.parentElement.style.display = 'none';
   }, false);
 
   controlDir.addEventListener('touchstart', function(ev) {
@@ -289,7 +266,7 @@ function addListeners() {
 }
 
 (function() {
-    setMapWidth();
-    addListeners();
-    getLocation();
+  setMapWidth();
+  addListeners();
+  getLocation();
 })();
