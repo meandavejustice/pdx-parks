@@ -160,13 +160,16 @@ function onSuccess(position) {
 
   var req = new XMLHttpRequest();
   req.onloadend = closestParkSuccess;
-  req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat+'&count=5');
+  req.open('get', '/data');
+//  req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat+'&count=5');
   req.send();
 }
 
 // this should probably be another type of alert that slides in from beneath
 // the header, sort of like the built in bootstrap alerts.
 function onError(err) {
+  // **remove**
+  onSuccess(defaultLocation);
   humane.log("There was an issue getting your location, try inputting it manually");
   console.warn('ERROR(' + err.code + '): ' + err.message);
 }
