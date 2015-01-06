@@ -1,37 +1,41 @@
+var util = require('util');
 var parks = require('Portland-park-data');
-var db = require('level')('./parkData');
+var db = require('level')('./parkData', {valueEncoding: 'json'});
 var geo = require('level-geospatial')(db);
 
 // parks.forEach(function(parkObj) {
 //   var loc = parkObj.loc;
-//   var val = JSON.stringify(parkObj);
-//   geo.put(loc, parkObj.Property, val, function(err) {
+//   geo.put(loc, parkObj.Property, parkObj, function(err) {
 //     if (err) console.error(err);
 //   });
 // });
 
 // db.createReadStream()
 //   .on('data', function(data) {
-//     console.log('\n \n !!!!!!!!!!!!!!!!', data);
+//   console.log('\n !!!!', data.key, '\n:::::', util.inspect(data.value));
 //   });
 
-// geo.search({lat:45,lon:-122},500000).on("data",console.log);
+var mySearch = geo.search({lat:45.46,lon:-122.66}, 1000);
+
+mySearch.on("data",function(data) {
+  console.log(data);
+});
+
+mySearch.on("end",function() {
+  console.log('the end.');
+});
 
 /*
-  loc object { lon: -122.692436, lat: 45.453841 }
-  property Marshall Park 
-  whole object { Address: 'SW 18th Place',
-  OwnedAcres: '25.879999999999999',
-  Property: 'Marshall Park ',
-  PropertyID: '252',
-  SubArea: 'SW',
-  UnownedAcres: '0',
-  YearAcquired: '1948',
-  Zip: '97219 ',
-  amenities: 
-  [ 'natural area',
-  'paths: unpaved',
-  'picnic tables',
-  'trails: hiking' ],
-  loc: { lon: -122.692436, lat: 45.453841 } }
-*/
+{
+"Address":"N Greeley Ave & Going Ct",
+"OwnedAcres":"8.8499999999999996",
+"Property":"Madrona Park",
+"PropertyID":"247",
+"SubArea":"N",
+"UnownedAcres":"0",
+"YearAcquired":"1921",
+"Zip":"97203 ",
+"amenities":["basketball court","natural area","paths: unpaved","playground"],
+"loc":{"lon":-122.693537,"lat":45.557479}
+
+ * */

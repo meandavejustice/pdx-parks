@@ -22,17 +22,17 @@
   "private": true,
   "author": "meandave",
   "license": "MIT",
+  "dev-dependencies": {
+      "bower": "^1.3.1",
+      "jung": "^1.2.0",
+      "logfmt": "^1.0.0-pre"
+  },
   "dependencies": {
-    "request": "^2.34.0",
-    "node-jquery-deparam": "0.0.3",
     "express": "^3.4.8",
-    "node-sass": "^0.8.3",
-    "bower": "^1.3.1",
-    "logfmt": "^1.0.0-pre",
-    "jung": "^1.2.0",
     "keep-alive": "^0.1.0",
-    "level-geospatial": "0.0.5",
     "level": "^0.18.0",
-    "pdx-park-data": "meandavejustice/Portland-park-data"
+    "level-geospatial": "0.0.5",
+    "pdx-park-data": "meandavejustice/Portland-park-data",
+    "request": "^2.34.0"
   }
 }

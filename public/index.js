@@ -22,7 +22,7 @@ if ("geolocation" in navigator) {
 }
 
 function fixLocationObject(location) {
-  if (location.lon) {
+  if (location.lon !== undefined) {
     location.lng = location.lon;
   } else if (location.latitude) {
     location.lat = location.latitude;
@@ -75,7 +75,7 @@ function genMap() {
 // maybe make a check for parks array here,
 // that way we can avoid more checks in updateMap function
 function closestParkSuccess(res) {
-  parks = JSON.parse(res.target.response).results;
+  parks = JSON.parse(res.target.response);
   updateMap(fixLocationObject(parks[count].loc));
 }
 
@@ -161,7 +161,7 @@ function onSuccess(position) {
   var req = new XMLHttpRequest();
   req.onloadend = closestParkSuccess;
   req.open('get', '/data');
-//  req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat+'&count=5');
+  req.open('get', '/parks?lon='+coords.lng+'&lat='+coords.lat);
   req.send();
 }
 
